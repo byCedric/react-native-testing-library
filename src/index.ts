@@ -30,4 +30,10 @@ if (!process?.env?.RNTL_SKIP_AUTO_CLEANUP) {
   }
 }
 
+if (typeof globalThis.IS_REACT_NATIVE_TEST_ENVIRONMENT === 'undefined') {
+  // Disable the deprecation warnings from `react-test-renderer@19`
+  // This is a workaround until React Native has its own test renderer
+  globalThis.IS_REACT_NATIVE_TEST_ENVIRONMENT = true;
+}
+
 export * from './pure';
